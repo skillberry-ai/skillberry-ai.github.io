@@ -1,0 +1,27 @@
+# Skillberry blog corner.
+# Add one entry per post. The site sorts by `date` (newest first), so order here doesn't matter.
+#   title     – post title as published
+#   url       – canonical link to the post
+#   date      – publish date, YYYY-MM-DD
+#   platform  – where it was published (shown as a label)
+#   authors   – optional, free text
+#   image     – a graphic from the post; prefer a local copy under /assets/img/blog/
+#   image_alt – describe the graphic for screen readers
+#   abstract  – one paragraph, up to ~3 lines
+#   projects  – optional list of project slugs (matching _projects/*.md) the post relates to
+
+- title: "Skillberry-Store: the open-source control plane for agent skills"
+  url: https://itnext.io/skillberry-store-the-open-source-control-plane-for-agent-skills-99be3aab6229
+  date: 2026-09-08
+  platform: ITNEXT (Medium)
+  authors: Skillberry Team @ IBM Research
+  image: /assets/img/blog/skillberry-store-plugin-framework.png
+  image_alt: >-
+    Diagram of the Skillberry-Store plugin framework: a skill event fans out to sast, dast,
+    dependency-tracker and provenance plugins, each writing findings back as tags on the
+    skill's record, which an approver plugin reads against thresholds.
+  abstract: >-
+    Agents run third-party skills with their own privileges, and audits found over a third of
+    published skills carry a security flaw. Meet Skillberry-Store: one Apache-2.0 service that
+    versions, governs and serves every skill, with plugins that scan and approve skills before use.
+  projects: [skillberry-store]

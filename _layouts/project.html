@@ -1,0 +1,50 @@
+---
+layout: default
+---
+{%- assign related = site.data.blogs | sort: "date" | reverse -%}
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="{{ '/projects/' | relative_url }}">Projects</a> /</p>
+    <h1><span aria-hidden="true">{{ page.icon }}</span> {{ page.title }}</h1>
+    <p class="lead">{{ page.tagline }}</p>
+    <p class="actions">
+      <a class="btn btn-primary" href="{{ page.repo }}">{% include icon-github.svg %} View on GitHub</a>
+      {%- if page.site %}<a class="btn" href="{{ page.site }}">🌐 Project site &amp; docs</a>{% endif %}
+      {%- if page.demo %}<a class="btn" href="{{ page.demo }}">▶ Live demo</a>{% endif %}
+    </p>
+    <ul class="facts">
+      {% if page.language %}<li><span>Language</span>{{ page.language }}</li>{% endif %}
+      {% if page.status %}<li><span>Status</span>{{ page.status }}</li>{% endif %}
+      <li><span>License</span>Apache-2.0</li>
+      {% if page.requires %}<li><span>Requires</span><a href="{{ '/projects/' | append: page.requires | append: '/' | relative_url }}">{{ page.requires }}</a></li>{% endif %}
+    </ul>
+  </div>
+</section>
+<div class="container page-body project-body">
+  <div class="prose">
+    {{ content }}
+
+    {% if page.highlights %}
+    <h3>Highlights</h3>
+    <ul class="highlights">
+      {%- for h in page.highlights %}
+      <li>{{ h | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+      {%- endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  <aside class="sidebar">
+    {% if page.install %}
+    <div class="card">
+      <h2 class="card-title">⚡ Quick start</h2>
+      <pre class="install"><code>{{ page.install | strip | escape }}</code></pre>
+    </div>
+    {% endif %}
+    {%- assign shown = false %}
+    {%- for b in related %}{% if b.projects contains page.slug %}
+      {%- unless shown %}<div class="card"><h2 class="card-title">📝 Read more</h2><ul class="plain">{% assign shown = true %}{% endunless %}
+      <li><a href="{{ b.url }}">{{ b.title }}</a> <span class="meta">· {{ b.date | date: '%b %Y' }}</span></li>
+    {%- endif %}{% endfor %}
+    {%- if shown %}</ul></div>{% endif %}
+  </aside>
+</div>

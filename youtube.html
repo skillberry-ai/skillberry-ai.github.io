@@ -1,0 +1,14 @@
+---
+layout: page
+title: YouTube
+icon: 📺
+permalink: /youtube/
+description: Videos, shorts and playlists from the Skillberry YouTube channel.
+lead: Demos, walkthroughs and shorts from the Skillberry team.
+---
+<p class="actions">
+  <a class="btn btn-primary" href="{{ site.youtube_url }}">▶ Visit @skillberry-ai on YouTube</a>
+  <a class="btn" href="{{ site.youtube_url }}?sub_confirmation=1">🔔 Subscribe</a>
+</p>
+<h2 class="subhead">Latest</h2>
+{% include youtube-list.html limit=5 %}

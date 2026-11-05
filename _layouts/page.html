@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<section class="page-hero">
+  <div class="container">
+    <h1>{% if page.icon %}<span aria-hidden="true">{{ page.icon }}</span> {% endif %}{{ page.title }}</h1>
+    {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+  </div>
+</section>
+<div class="container page-body">
+  {{ content }}
+</div>

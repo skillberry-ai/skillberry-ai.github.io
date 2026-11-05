@@ -1,0 +1,66 @@
+---
+layout: default
+title: Skillberry — enterprise-ready skills for AI agents
+---
+{%- assign projects = site.projects | sort: "order" -%}
+{%- assign posts = site.data.blogs | sort: "date" | reverse -%}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <p class="eyebrow">🫐 Open source · Apache-2.0</p>
+      <h1>Skills your agents can <span class="accent">trust</span>.</h1>
+      <p class="lead">
+        Skillberry is a framework for enterprise-ready AI agent skills. Approved, deterministic
+        skills run at runtime instead of the LLM, so agents get more consistent and cheaper, and
+        the skills keep improving against your own evals.
+      </p>
+      <p class="actions">
+        <a class="btn btn-primary" href="{{ '/projects/' | relative_url }}">Explore projects</a>
+        <a class="btn" href="{{ site.github_url }}">{% include icon-github.svg %} github.com/skillberry-ai</a>
+      </p>
+    </div>
+    <img class="hero-logo" src="{{ '/assets/img/skillberry-logo.png' | relative_url }}" alt="Skillberry logo" width="260" height="260">
+  </div>
+</section>
+
+<section class="section pillars">
+  <div class="container grid grid-3">
+    <div class="pillar"><span class="emoji" aria-hidden="true">🗃️</span><h2>Manage</h2><p>Store, version, govern and serve skills, tools and MCP servers at scale.</p></div>
+    <div class="pillar"><span class="emoji" aria-hidden="true">🧬</span><h2>Optimize</h2><p>Generate, test and refine skills iteratively against your own evaluations.</p></div>
+    <div class="pillar"><span class="emoji" aria-hidden="true">🔁</span><h2>Adapt</h2><p>Keep improving skills as user inputs and business needs change.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>🤖 Key projects</h2>
+      <a href="{{ '/projects/' | relative_url }}">All projects →</a>
+    </div>
+    <div class="grid grid-3">
+      {%- for p in projects %}{% include project-card.html project=p %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>📝 From the blog corner</h2>
+      <a href="{{ '/blog/' | relative_url }}">All posts →</a>
+    </div>
+    <div class="blog-list">
+      {%- for b in posts limit: 3 %}{% include blog-card.html post=b %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>📺 On YouTube</h2>
+      <a href="{{ site.youtube_url }}">@skillberry-ai →</a>
+    </div>
+    {% include youtube-list.html limit=5 %}
+  </div>
+</section>

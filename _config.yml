@@ -1,0 +1,48 @@
+title: Skillberry
+tagline: Enterprise-ready skills for AI agents
+description: >-
+  Skillberry is an open-source framework for enterprise-ready AI agent skills —
+  approved, deterministic skills at runtime, continuously optimized against your evals.
+url: https://skillberry-ai.github.io
+baseurl: ""
+lang: en
+logo: /assets/img/skillberry-logo.png
+
+github_org: skillberry-ai
+github_url: https://github.com/skillberry-ai
+youtube_url: https://youtube.com/@skillberry-ai
+youtube_channel_id: UC2XX4fT9cDZuZWgCOaw9lEw
+
+social:
+  name: Skillberry
+  links:
+    - https://github.com/skillberry-ai
+    - https://youtube.com/@skillberry-ai
+
+nav:
+  - { title: Projects, url: /projects/ }
+  - { title: Blog, url: /blog/ }
+  - { title: YouTube, url: /youtube/ }
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope: { path: "", type: projects }
+    values: { layout: project }
+  - scope: { path: "" }
+    values: { layout: default }
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - vendor/
+  - .github/

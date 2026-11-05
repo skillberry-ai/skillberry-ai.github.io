@@ -1,0 +1,12 @@
+{%- assign b = include.post -%}
+<article class="card blog-card">
+  <a class="blog-image" href="{{ b.url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ b.image | relative_url }}" alt="{{ b.image_alt | default: '' }}" loading="lazy">
+  </a>
+  <div class="blog-body">
+    <p class="meta"><time datetime="{{ b.date | date: '%Y-%m-%d' }}">{{ b.date | date: '%b %-d, %Y' }}</time> · {{ b.platform }}</p>
+    <h3><a href="{{ b.url }}">{{ b.title }}</a></h3>
+    <p class="abstract">{{ b.abstract }}</p>
+    <p class="card-links"><a href="{{ b.url }}">Read the post →</a></p>
+  </div>
+</article>

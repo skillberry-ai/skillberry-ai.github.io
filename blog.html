@@ -1,0 +1,12 @@
+---
+layout: page
+title: Blog corner
+icon: 📝
+permalink: /blog/
+description: Posts by the Skillberry team on agent skills, MCP, evals and optimization, collected from around the web.
+lead: Posts by the Skillberry team, collected from wherever they were published. Newest first.
+---
+{%- assign posts = site.data.blogs | sort: "date" | reverse -%}
+<div class="blog-list">
+  {%- for b in posts %}{% include blog-card.html post=b %}{% endfor %}
+</div>

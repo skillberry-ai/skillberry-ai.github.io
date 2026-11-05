@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f4ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1420" media="(prefers-color-scheme: dark)">
+<script>
+  /* Apply the saved theme before first paint. "system" (or nothing saved) follows the OS. */
+  (function () {
+    try {
+      var t = localStorage.getItem("sb-theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+{% seo %}
+<link rel="icon" type="image/png" href="{{ '/assets/img/skillberry-logo.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/img/skillberry-logo.png' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>

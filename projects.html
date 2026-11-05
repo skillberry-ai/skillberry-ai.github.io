@@ -1,0 +1,13 @@
+---
+layout: page
+title: Projects
+icon: 🤖
+permalink: /projects/
+description: The key open-source projects of Skillberry — skill optimization, a skills store, MCP simulation, test generation, LLM client and a proxy agent.
+lead: Open-source building blocks for managing, testing and optimizing agent skills. All Apache-2.0, all on GitHub.
+---
+{%- assign projects = site.projects | sort: "order" -%}
+<div class="grid grid-3">
+  {%- for p in projects %}{% include project-card.html project=p %}{% endfor %}
+</div>
+<p class="more">More repositories live in the <a href="{{ site.github_url }}">skillberry-ai GitHub organization</a>.</p>

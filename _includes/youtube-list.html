@@ -1,0 +1,21 @@
+{%- assign items = site.data.youtube.items | sort: "published" | reverse -%}
+{%- assign limit = include.limit | default: 5 -%}
+{%- if items.size > 0 %}
+<div class="grid yt-grid">
+  {%- for v in items limit: limit %}
+  <article class="card yt-card">
+    <a href="{{ v.url }}" class="yt-thumb{% if v.type == 'short' %} is-short{% endif %}">
+      {%- if v.thumbnail %}<img src="{{ v.thumbnail }}" alt="" loading="lazy">{% endif %}
+      <span class="yt-badge">{% case v.type %}{% when 'short' %}📱 Short{% when 'playlist' %}📚 Playlist{% if v.count %} · {{ v.count }}{% endif %}{% else %}▶ Video{% endcase %}</span>
+    </a>
+    <h3><a href="{{ v.url }}">{{ v.title }}</a></h3>
+    <p class="meta"><time datetime="{{ v.published }}">{{ v.published | date: '%b %-d, %Y' }}</time></p>
+  </article>
+  {%- endfor %}
+</div>
+{%- else %}
+<div class="card empty-state">
+  <p>🤖📺 The bots are still in the editing room — no public videos yet.</p>
+  <p>Subscribe to <a href="{{ site.youtube_url }}">@skillberry-ai</a> to catch the first upload.</p>
+</div>
+{%- endif %}

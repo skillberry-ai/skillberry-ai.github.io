@@ -1,0 +1,10 @@
+{%- assign p = include.project -%}
+<article class="card project-card">
+  <h3><span class="emoji" aria-hidden="true">{{ p.icon }}</span> <a href="{{ p.url | relative_url }}" class="stretched">{{ p.title }}</a></h3>
+  <p>{{ p.tagline }}</p>
+  <ul class="tags">{% for t in p.tags limit: 3 %}<li>{{ t }}</li>{% endfor %}</ul>
+  <p class="card-links">
+    <a href="{{ p.repo }}">{% include icon-github.svg %} Repo</a>
+    {%- if p.site %}<a href="{{ p.site }}">🌐 Project site</a>{% endif %}
+  </p>
+</article>
