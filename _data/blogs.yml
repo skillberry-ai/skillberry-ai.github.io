@@ -2,12 +2,12 @@
 # Add one entry per post. The site sorts by `date` (newest first), so order here doesn't matter.
 #   title     – post title as published
 #   url       – canonical link to the post
-#   date      – publish date, YYYY-MM-DD
+#   date      – publish date, YYYY-MM-DD (add a time, e.g. 2026-11-01 07:01:04 +0000, to order same-day posts)
 #   platform  – where it was published (shown as a label)
 #   authors   – optional, free text
 #   image     – a graphic from the post; prefer a local copy under /assets/img/blog/
 #   image_alt – describe the graphic for screen readers
-#   abstract  – one paragraph, up to ~3 lines
+#   abstract  – one paragraph, up to ~3 lines (about 260 characters)
 #   projects  – optional list of project slugs (matching _projects/*.md) the post relates to
 
 - title: "Skillberry-Store: the open-source control plane for agent skills"
@@ -21,7 +21,57 @@
     dependency-tracker and provenance plugins, each writing findings back as tags on the
     skill's record, which an approver plugin reads against thresholds.
   abstract: >-
-    Agents run third-party skills with their own privileges, and audits found over a third of
-    published skills carry a security flaw. Meet Skillberry-Store: one Apache-2.0 service that
-    versions, governs and serves every skill, with plugins that scan and approve skills before use.
+    Audits found over a third of published agent skills carry a security flaw. Skillberry-Store is one Apache-2.0 service that versions, governs and serves every skill to your agents, with plugins that scan and approve skills before they reach a runtime.
   projects: [skillberry-store]
+
+- title: "CapEvolve: Optimize agentic capabilities — with agents"
+  url: https://medium.com/@eran.raichstein/capevolve-optimize-agentic-capabilities-with-agents-6719d8d903ec
+  date: 2026-07-26
+  platform: Medium
+  authors: Eran Raichstein
+  image: /assets/img/blog/capevolve-optimization-loop.png
+  image_alt: >-
+    Poster of the CapEvolve loop: capture, evolve, optimize, evaluate and adapt around a
+    capybara at a laptop, with input sources on the left and outcomes on the right.
+  abstract: >-
+    Some agent failures are structural, and prompt tuning won't fix them. Meet cap-evolve: an optimization loop over an agent's prompts, tool code, MCP surfaces and skill packages, driven by an agent, on τ²-bench, SWE-bench and SkillsBench.
+  projects: [cap-evolve]
+
+- title: "Watch Your Agent Evolve: Inside the New CapEvolve Observability UI"
+  url: https://medium.com/@eran.raichstein/watch-your-agent-learn-inside-the-new-capevolve-ui-d28b2127e47e
+  date: 2026-10-19
+  platform: Medium
+  authors: Eran Raichstein
+  image: /assets/img/blog/capevolve-ui-root-cause.png
+  image_alt: >-
+    CapEvolve UI screen linking 6 failing tasks to one root-cause cluster (formula written
+    instead of value) and to the single prompt edit that fixed them.
+  abstract: >-
+    A higher score doesn't tell you why. The new CapEvolve UI traces each failing task to its root cause, the edit that fixed it and the candidates the gate refused. In one run, a single prompt rule lifted held-out accuracy from 38.6% to 89.8%.
+  projects: [cap-evolve]
+
+- title: "Agents in the Lab"
+  url: https://medium.com/@bnayahu/agents-in-the-lab-52f0c84dc704
+  date: 2026-11-01 07:01:04 +0000
+  platform: Medium
+  authors: "@bnayahu"
+  image: /assets/img/blog/agents-in-the-lab-sealed-trial.png
+  image_alt: >-
+    Diagram of one sealed trial: Rubrica supplies the task and answer key, Simulation Harness
+    the simulated services, Harbor grades the transcript, and cap-evolve edits the agent's instructions.
+  abstract: >-
+    Tests a model writes from a single prompt are a vibe check with checkmarks. This post builds a lab for agents (Simulation Harness for the world, Rubrica for trusted tasks, cap-evolve for the fixes) and uses it to find real bugs in Red Hat's PARSEC.
+  projects: [rubrica, simulation-harness, cap-evolve]
+
+- title: "cap-evolve beats the state of the art on SpreadsheetBench: Gemma-4-31B from 43.5% to 76.8%, weights unchanged"
+  url: https://dev.to/eran_raichstein_30b6c0f15/evolving-spreadsheet-skills-gemma-4-31b-from-435-to-768-on-spreadsheetbench-weights-unchanged-1h37
+  date: 2026-11-01 11:48:22 +0000
+  platform: DEV Community
+  authors: Eran Raichstein
+  image: /assets/img/blog/cap-evolve-spreadsheetbench-scoreboard.png
+  image_alt: >-
+    Bar chart of Gemma-4-31B-It on the SpreadsheetBench sealed test: no skill 43.5–48.3, SkillOpt
+    63.1, WikiSkill 68.0, and cap-evolve up to 76.8 across three runs.
+  abstract: >-
+    With its weights unchanged, Gemma-4-31B goes from 43.5% to 76.8% on held-out SpreadsheetBench tasks once cap-evolve rewrites its instructions. That is 8.8 points above the best published result. The post covers the method and how the comparison was kept fair.
+  projects: [cap-evolve]

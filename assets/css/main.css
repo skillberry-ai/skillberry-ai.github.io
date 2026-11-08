@@ -183,10 +183,7 @@ th { color: var(--text-muted); font-weight: 600; }
 .blog-image { display: block; background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
 .blog-image img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
 .blog-card h3 { font-size: 1.25rem; }
-.abstract {
-  color: var(--text-muted);
-  display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-}
+.abstract { color: var(--text-muted); }
 
 /* youtube */
 .yt-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
