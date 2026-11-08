@@ -5,6 +5,20 @@ Org-level pages of skillberry-ai: https://skillberry-ai.github.io
 A small [Jekyll](https://jekyllrb.com/) site with no theme dependency. It is built and deployed by
 GitHub Actions ([`.github/workflows/pages.yml`](.github/workflows/pages.yml)).
 
+## Review mode (current)
+
+While the site is in review, the public URL serves only the placeholder in [`coming-soon/`](coming-soon/).
+Its **🔒 Team preview** corner button leads to `/preview/`, which is the full site encrypted with
+[StatiCrypt](https://github.com/robinmoisson/staticrypt), so it opens only with the team password.
+
+- The password is the `PREVIEW_PASSWORD` repository secret. To change it, run
+  `gh secret set PREVIEW_PASSWORD -R skillberry-ai/skillberry-ai.github.io` and re-run **Deploy site**.
+- "Remember me" keeps a reviewer unlocked for 30 days. Changing the password logs everyone out.
+- `.staticrypt.json` holds the salt, which isn't secret. Keep it so remembered logins survive redeploys.
+- The page text is encrypted, but images and CSS under `/preview/assets/` are not.
+
+To go public: in `pages.yml`, build Jekyll at `/` and upload `_site`, and drop the placeholder and encryption steps.
+
 ## Layout
 
 | Path | What it is |

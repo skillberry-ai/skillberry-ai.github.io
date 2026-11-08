@@ -45,5 +45,7 @@ exclude:
   - Gemfile.lock
   - scripts/
   - coming-soon/
+  - _build/
+  - _public/
   - vendor/
   - .github/

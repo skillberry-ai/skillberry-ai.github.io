@@ -23,12 +23,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      # The full site is in review and not public yet: publish only the placeholder.
-      # To go live, restore the Jekyll build (see git history) and drop the `path` below.
+      # Public: only the coming-soon placeholder at /. The full site is built under /preview/
+      # and encrypted with StatiCrypt, so it opens only with the team password
+      # (repo secret PREVIEW_PASSWORD). To go public, build Jekyll at / and drop the rest.
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
       - uses: actions/configure-pages@v5
+      - name: Build full site under /preview
+        run: bundle exec jekyll build --baseurl /preview -d _build/site
+        env:
+          JEKYLL_ENV: production
+      - name: Encrypt preview
+        env:
+          PREVIEW_PASSWORD: ${{ secrets.PREVIEW_PASSWORD }}
+        run: |
+          test -n "$PREVIEW_PASSWORD" || { echo "::error::Set the PREVIEW_PASSWORD repository secret"; exit 1; }
+          cp .staticrypt.json _build/
+          rm -f _build/site/sitemap.xml _build/site/robots.txt
+          cd _build
+          npx --yes staticrypt@3.5.4 site/* -r -d preview -p "$PREVIEW_PASSWORD" --short --remember 30 \
+            --template-title "Skillberry team preview" \
+            --template-instructions "🫐 This preview is for the Skillberry team. Enter the team password." \
+            --template-button "Open preview" \
+            --template-color-primary "#34407a" --template-color-secondary "#f7f4ec"
+      - name: Assemble
+        run: |
+          mkdir -p _public
+          cp -r coming-soon/. _public/
+          cp -r _build/preview _public/preview
+          printf 'User-agent: *\nDisallow: /preview/\n' > _public/robots.txt
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: coming-soon
+          path: _public
 
   deploy:
     needs: build
