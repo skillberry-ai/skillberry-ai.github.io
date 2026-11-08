@@ -44,5 +44,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - scripts/
+  - coming-soon/
   - vendor/
   - .github/
